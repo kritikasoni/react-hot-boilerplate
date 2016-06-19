@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import DoctorList from './DoctorList';
-export default class App extends Component {
+import Doctor from './Doctor';
+
+export default class DoctorList extends Component {
     constructor(props) {
         super(props);
         this.state =  {
-            users: []
+            doctors: []
         }
     }
 
     componentWillMount() {
         axios
-            .get('http://localhost:1337/user')
+            .get('http://localhost:1337/doctor')
             .then(response => {
                 this.setState({
-                    users : response.data
+                    doctors : response.data
                 });
             });
     }
     render() {
-        let users = this.state.users.map((user) => { //map ทำเพื่อเอาtagไปใส่
-            return (<p>{user.id + user.name}</p>);
+        let doctors = this.state.doctors.map((doctor) => { //map ทำเพื่อเอาtagไปใส่
+            return (<Doctor key={doctor.id} {...doctor} />);
         });
         return (
             <div>
                 <h1>{this.props.title}</h1>
-                {users}
-                <DoctorList title="Doctors" />
+                {doctors}
             </div>
         );
     }
 }
+
