@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import DoctorList from './DoctorList';
+import CreateDoctor from './CreateDoctor';
 export default class App extends Component {
     constructor(props) {
         super(props);
@@ -10,13 +11,13 @@ export default class App extends Component {
     }
 
     componentWillMount() {
-        axios
-            .get('http://localhost:1337/user')
-            .then(response => {
-                this.setState({
-                    users : response.data
-                });
-            });
+        // axios
+        //     .get('http://localhost:1337/user')
+        //     .then(response => {
+        //         this.setState({
+        //             users : response.data
+        //         });
+        //     });
     }
     render() {
         let users = this.state.users.map((user) => { //map ทำเพื่อเอาtagไปใส่
@@ -25,8 +26,7 @@ export default class App extends Component {
         return (
             <div>
                 <h1>{this.props.title}</h1>
-                {users}
-                <DoctorList title="Doctors" />
+                <CreateDoctor />
             </div>
         );
     }
