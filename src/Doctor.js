@@ -14,5 +14,6 @@ export default class Doctor extends Component {
             </div>
         );
     }
+
 }
 

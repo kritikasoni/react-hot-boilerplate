@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'; //library เอาไว้ส่งข้อมูล
-export default class UpdateDoctor extends Component {
+export default class DoctorUpdate extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,7 +14,7 @@ export default class UpdateDoctor extends Component {
         e.preventDefault();
         console.log('submit');
         axios
-            .put('http://localhost:1337/doctor/2',{ //ใช้เพื่อส่งข้อมูล
+            .put('http://localhost:1337/doctor/'+this.props.params.id,{ //ใช้เพื่อส่งข้อมูล
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 department: this.state.department
@@ -29,7 +29,7 @@ export default class UpdateDoctor extends Component {
 
     componentWillMount() {
         axios
-            .get('http://localhost:1337/doctor/2')
+            .get('http://localhost:1337/doctor/'+this.props.params.id)
             .then(response => {
                 this.setState({
                     firstName : response.data.firstName,

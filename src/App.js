@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import DoctorList from './DoctorList';
-import CreateDoctor from './CreateDoctor';
-import UpdateDoctor from './UpdateDoctor';
+import {Link} from 'react-router';
+
+
 export default class App extends Component {
     constructor(props) {
         super(props);
@@ -10,25 +9,16 @@ export default class App extends Component {
             users: []
         }
     }
-
-    componentWillMount() {
-        // axios
-        //     .get('http://localhost:1337/user')
-        //     .then(response => {
-        //         this.setState({
-        //             users : response.data
-        //         });
-        //     });
-    }
     render() {
-        let users = this.state.users.map((user) => { //map ทำเพื่อเอาtagไปใส่
-            return (<p>{user.id + user.name}</p>);
-        });
         return (
             <div>
-                <h1>{this.props.title}</h1>
-                <DoctorList />
+                <h1>Menu</h1>
+                <ul role="nav">
+                    <li><Link to="/doctors">Doctor List</Link></li>
+                    <li><Link to="/doctors/create">Doctor create</Link></li>
+                </ul>
+                {this.props.children}
             </div>
-        );
+        )
     }
 }

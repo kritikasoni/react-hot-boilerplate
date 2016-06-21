@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'; //library เอาไว้ส่งข้อมูล
-export default class CreateDoctor extends Component {
+export default class DoctorCreate extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,6 +21,7 @@ export default class CreateDoctor extends Component {
             })
             .then(response => {
                 console.log(response);
+                alert('success');
             })
             .catch(err => {
                 console.error(err);
