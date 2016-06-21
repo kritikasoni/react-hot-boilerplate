@@ -8,6 +8,7 @@ export default class DoctorList extends Component {
         this.state =  {
             doctors: []
         }
+        this._deleteDoctor = this._deleteDoctor.bind(this);
     }
 
     componentWillMount() {
@@ -19,9 +20,22 @@ export default class DoctorList extends Component {
                 });
             });
     }
+
+    _deleteDoctor() {
+        axios
+            .delete('http://localhost:1337/doctor/2')
+            .then(response => console.log)
+            .catch(error => console.log);
+    }
     render() {
         let doctors = this.state.doctors.map((doctor) => { //map ทำเพื่อเอาtagไปใส่
-            return (<Doctor key={doctor.id} {...doctor} />);
+            return (
+                <div>
+                    <Doctor key={doctor.id} {...doctor} />
+                    <button type="button" onClick="">Edit</button>
+                    <button type="button" onClick={this._deleteDoctor}>Delete</button>
+                </div>
+            );
         });
         return (
             <div>
@@ -30,5 +44,7 @@ export default class DoctorList extends Component {
             </div>
         );
     }
+
+
 }
 
