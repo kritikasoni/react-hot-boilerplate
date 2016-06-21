@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DoctorList from './DoctorList';
 import CreateDoctor from './CreateDoctor';
+import UpdateDoctor from './UpdateDoctor';
 export default class App extends Component {
     constructor(props) {
         super(props);
@@ -26,7 +27,7 @@ export default class App extends Component {
         return (
             <div>
                 <h1>{this.props.title}</h1>
-                <CreateDoctor />
+                <UpdateDoctor />
             </div>
         );
     }
